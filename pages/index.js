@@ -2,19 +2,25 @@
  * @Author: soda
  * @Date: 2019-12-25 09:33:52
  * @LastEditors  : soda
- * @LastEditTime : 2019-12-25 14:09:34
+ * @LastEditTime : 2019-12-27 15:33:42
  */
-import './style.css';
-import './style.less';
-import './style.scss';
+import React from 'react'
 import { Button } from 'antd';
-// import image from './big-images.jpg'
+import {connect} from 'react-redux';
+import stylesheet from 'antd/dist/antd.min.css';
+import image from './big-images.jpg'
 
-export default () => (
-  <div className="bg lessstyle"> Welcome
-  {/* <img src={image} alt="image" />  */}
-  to
-  <Button type="primary">Button</Button> next.js!
-  <div className="test-sass">sass content</div>
-  </div>
-)
+class Home extends React.Component {
+  render() {
+    console.log('this.props', this.props);
+    return (
+      <div>
+        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+        <img src={image} alt="image" style={{ width: '300px'}} />
+        <Button type="primary">Hello</Button>
+      </div>
+    )
+  }
+}
+
+export default connect(state => state)(Home);
